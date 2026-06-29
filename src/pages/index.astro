@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavBar from '../components/NavBar.jsx';
+import HeroSection from '../components/HeroSection.jsx';
+import BentoGrid from '../components/BentoGrid.jsx';
+import ProjectsSection from '../components/ProjectsSection.jsx';
+import FooterSection from '../components/FooterSection.jsx';
+---
+
+<Layout title="Kazuto_Black | Frontend Developer Portfolio">
+	{/* Navigation */}
+	<NavBar client:load />
+
+	{/* Main Content */}
+	<main>
+		{/* Hero Section */}
+		<HeroSection client:load />
+
+		{/* Bento Grid (About Section) */}
+		<BentoGrid client:load />
+
+		{/* Projects Section */}
+		<ProjectsSection client:load />
+	</main>
+
+	{/* Footer */}
+	<FooterSection client:load />
+</Layout>

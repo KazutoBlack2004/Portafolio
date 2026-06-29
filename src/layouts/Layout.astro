@@ -1,0 +1,62 @@
+---
+import '../styles/global.css';
+import CursorEffect from '../components/CursorEffect.jsx';
+
+const { title = 'Kazuto_Black | Frontend Developer Portfolio' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta
+      name="description"
+      content="Portfolio of Kazuto_Black, Frontend Developer based in Algeria. Showcasing modern web projects built with React, Astro, and more."
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-black text-white overflow-x-hidden antialiased">
+    <CursorEffect client:only="react" />
+    <main class="relative z-10">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #000; }
+  ::-webkit-scrollbar-thumb {
+    background: #581c87;
+    border-radius: 9999px;
+    border: 2px solid #000;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: #7e22ce; }
+
+  /* Fade-in animation for footer logo */
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fadeIn { animation: fadeIn 1.5s ease-in-out; }
+</style>
