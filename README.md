@@ -29,34 +29,33 @@ Para correr este proyecto en tu máquina local, sigue estos pasos:
 
 ---
 
-## 🌐 Cómo Desplegar este Sitio Estático (Vercel)
+## 🌐 Cómo Desplegar este Sitio Estático (Render)
 
-El método más fácil y rápido para desplegar este portafolio de manera gratuita (y con integración continua) es usar **[Vercel](https://vercel.com/)**.
+El método más fácil y rápido para desplegar este portafolio de manera gratuita (y con integración continua) es usar **[Render](https://render.com/)**.
 
-### Método 1: Despliegue Automático mediante GitHub (Recomendado)
-1. Ve a [GitHub](https://github.com/) y crea un nuevo repositorio público o privado.
-2. Sube el código de este proyecto a tu repositorio:
-   ```bash
-   git remote add origin https://github.com/tu-usuario/nombre-del-repo.git
-   git branch -M main
-   git push -u origin main
-   ```
-3. Ve a [Vercel](https://vercel.com) e inicia sesión con tu cuenta de GitHub.
-4. Haz clic en **"Add New..." > "Project"**.
-5. Importa el repositorio de tu portafolio que acabas de subir.
-6. Vercel detectará automáticamente que es un proyecto de **Astro**. No necesitas cambiar las configuraciones (el comando de build `npm run build` y el directorio `dist` se configurarán solos).
-7. Haz clic en **"Deploy"**. En un par de minutos, tu sitio estará en vivo y recibirás una URL pública.
+### Despliegue Automático mediante GitHub (Recomendado)
+1. Ve a [GitHub](https://github.com/) y asegúrate de que el código de tu proyecto esté subido a un repositorio.
+2. Ve a [Render](https://render.com) e inicia sesión con tu cuenta de GitHub.
+3. Haz clic en **"New +"** y selecciona **"Static Site"**.
+4. Conecta tu repositorio de GitHub seleccionando el que acabas de subir.
+5. Configura tu sitio estático con los siguientes **campos EXACTOS** (esto es crucial para que Astro funcione):
+   - **Name:** *Portafolio* (o el que prefieras)
+   - **Branch:** `main`
+   - **Root Directory:** *(Déjalo en blanco / vacío)*
+   - **Build Command:** `npm install && npm run build`
+   - **Publish Directory:** `dist`
+6. Haz clic en **"Create Static Site"**. En un par de minutos, tu sitio estará en vivo y Render te dará una URL pública `.onrender.com`.
 
-*(Cada vez que hagas `git push` a la rama `main` de tu repositorio, Vercel actualizará tu sitio automáticamente).*
+*(Cada vez que hagas `git push` a la rama `main` de tu repositorio, Render actualizará tu sitio automáticamente).*
 
 ### Método 2: Despliegue Manual (Build Local)
-Si prefieres generar los archivos tú mismo o usar otro servicio de hosting estático (como Netlify o GitHub Pages):
-1. Ejecuta el comando de construcción de producción:
+Si prefieres generar los archivos tú mismo o usar otro servicio de hosting estático (como Vercel, Netlify o GitHub Pages):
+1. Ejecuta el comando de construcción de producción en tu terminal local:
    ```bash
    npm run build
    ```
 2. Esto generará una carpeta llamada `dist/` en la raíz de tu proyecto.
-3. Puedes tomar todos los archivos dentro de la carpeta `dist/` y subirlos a cualquier servicio de hosting web.
+3. Puedes tomar todos los archivos dentro de la carpeta `dist/` y subirlos manualmente a cualquier servicio de hosting web.
 
 ---
 

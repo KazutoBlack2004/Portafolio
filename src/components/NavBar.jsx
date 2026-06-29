@@ -22,10 +22,26 @@ const LinkedinIcon = () => (
   </svg>
 );
 
+const MenuIcon = () => (
+  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="3" y1="12" x2="21" y2="12" />
+    <line x1="3" y1="6" x2="21" y2="6" />
+    <line x1="3" y1="18" x2="21" y2="18" />
+  </svg>
+);
+
+const XIcon = () => (
+  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="18" y1="6" x2="6" y2="18" />
+    <line x1="6" y1="6" x2="18" y2="18" />
+  </svg>
+);
+
 export default function NavBar() {
   const { t, i18n } = useTranslation();
   const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,15 +75,15 @@ export default function NavBar() {
       className="fixed top-0 left-0 w-full h-20 text-white z-50 transition-colors duration-300"
       style={{ backgroundColor: scrolled ? 'rgba(0,0,0,0.85)' : 'rgba(0,0,0,0.5)', backdropFilter: 'blur(16px)' }}
     >
-      <div className="max-w-[1200px] mx-auto h-full px-5 flex items-center justify-between">
+      <div className="max-w-[1200px] mx-auto h-full px-4 md:px-5 flex items-center justify-between">
         {/* Logo */}
-        <h1 className="text-[28px] font-bold cursor-pointer transition-colors duration-300 hover:text-purple-500">
+        <h1 className="text-[22px] md:text-[28px] font-bold cursor-pointer transition-colors duration-300 hover:text-purple-500 z-50 relative">
           <span className="text-purple-500">Kazuto</span>_black
           <span className="text-purple-400">.</span>
         </h1>
 
-        {/* Nav */}
-        <nav className="flex gap-8 rounded-full px-5 py-2.5 bg-white/5 shadow-sm backdrop-blur-md">
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex gap-8 rounded-full px-5 py-2.5 bg-white/5 shadow-sm backdrop-blur-md">
           <ul className="flex items-center gap-8 list-none m-0 p-0">
             {navLinks.map(({ label, href }) => (
               <li key={href}>
@@ -85,16 +101,17 @@ export default function NavBar() {
           </ul>
         </nav>
 
-        {/* Right Section: Language Toggle & Social Icons */}
-        <div className="flex items-center gap-6">
+        {/* Right Section */}
+        <div className="flex items-center gap-3 md:gap-6 z-50 relative">
           <button 
             onClick={toggleLanguage}
-            className="text-sm font-semibold tracking-wider text-white/90 hover:text-purple-400 transition-colors uppercase px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm"
+            className="text-xs md:text-sm font-semibold tracking-wider text-white/90 hover:text-purple-400 transition-colors uppercase px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm"
           >
             {i18n.language}
           </button>
 
-          <div className="flex gap-4">
+          {/* Desktop Socials */}
+          <div className="hidden sm:flex gap-4">
             {[
               { Icon: GithubIcon, href: 'https://github.com/KazutoBlack2004' },
               { Icon: LinkedinIcon, href: 'www.linkedin.com/in/chrystopher-silva-quintanilla-5b2460391' },
@@ -110,8 +127,57 @@ export default function NavBar() {
               </a>
             ))}
           </div>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className="md:hidden flex items-center justify-center p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors text-white"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <XIcon /> : <MenuIcon />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Nav Overlay */}
+      {mobileMenuOpen && (
+        <div className="md:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl border-t border-white/10 flex flex-col py-6 px-6 gap-6 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-300">
+          <nav>
+            <ul className="flex flex-col gap-6 list-none m-0 p-0">
+              {navLinks.map(({ label, href }) => (
+                <li key={href}>
+                  <a
+                    href={href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`block no-underline text-xl font-medium transition-colors duration-300 ${activeSection === href.slice(1)
+                      ? 'text-purple-400 drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]'
+                      : 'text-white/90 hover:text-purple-300'
+                      }`}
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          
+          <div className="flex gap-4 pt-4 border-t border-white/10">
+            {[
+              { Icon: GithubIcon, href: 'https://github.com/KazutoBlack2004' },
+              { Icon: LinkedinIcon, href: 'www.linkedin.com/in/chrystopher-silva-quintanilla-5b2460391' },
+            ].map(({ Icon, href }, i) => (
+              <a
+                key={i}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-10 h-10 rounded-full text-white bg-white/5 transition-all duration-300 hover:bg-purple-600 hover:shadow-[0_0_15px_#9333ea]"
+              >
+                <Icon />
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </header>
   );
 }
