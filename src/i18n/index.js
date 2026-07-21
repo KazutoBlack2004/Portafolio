@@ -52,8 +52,7 @@ const resources = {
         errorAlert: "Oops! Something went wrong. Please try again later.",
         warningAlert: "Please fill in all fields before sending.",
         detailsTitle: "Contact Information",
-        copyEmail: "Copy Email",
-        copiedEmail: "Copied!",
+        detailsDesc: "If you prefer to write directly, you can use the button below to send me an email.",
         directMail: "Direct Mail"
       },
       footer: {
@@ -143,8 +142,7 @@ const resources = {
         errorAlert: "¡Ups! Algo salió mal. Por favor, inténtalo de nuevo más tarde.",
         warningAlert: "Por favor, completa todos los campos antes de enviar.",
         detailsTitle: "Información de Contacto",
-        copyEmail: "Copiar Correo",
-        copiedEmail: "¡Copiado!",
+        detailsDesc: "Si prefieres escribir directamente, puedes utilizar el botón de abajo para enviarme un correo.",
         directMail: "Correo Directo"
       },
       footer: {

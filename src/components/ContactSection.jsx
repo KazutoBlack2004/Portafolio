@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { Send, Check, AlertCircle, Copy, Mail, ShieldAlert } from 'lucide-react';
+import { Send, Check, AlertCircle, Mail, ShieldAlert } from 'lucide-react';
 import '../i18n';
 
 // ─── CONFIGURACIÓN DE CORREO ──────────────────────────────────────────────────
@@ -13,22 +13,11 @@ const WEB3FORMS_ACCESS_KEY = "e7e0f091-6389-46b2-8d5f-56a698975f3b";
 
 export default function ContactSection() {
   const { t } = useTranslation();
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', message: '' });
   const [status, setStatus] = useState('idle'); // 'idle' | 'sending' | 'success' | 'error'
   const [validationError, setValidationError] = useState('');
-  const [copied, setCopied] = useState(false);
 
   const emailAddress = "chrys.oliver.2004@gmail.com";
-
-  const handleCopyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(emailAddress);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error('Failed to copy text: ', err);
-    }
-  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -40,7 +29,7 @@ export default function ContactSection() {
     e.preventDefault();
 
     // Check if fields are empty
-    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+    if (!formData.name.trim() || !formData.message.trim()) {
       setValidationError(t('contact.warningAlert'));
       return;
     }
@@ -58,7 +47,7 @@ export default function ContactSection() {
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
           name: formData.name,
-          email: formData.email,
+          email: emailAddress,
           message: formData.message,
           subject: 'Nuevo mensaje de contacto del Portafolio',
         }),
@@ -67,7 +56,7 @@ export default function ContactSection() {
       const result = await response.json();
       if (result.success) {
         setStatus('success');
-        setFormData({ name: '', email: '', message: '' });
+        setFormData({ name: '', message: '' });
       } else {
         setStatus('error');
       }
@@ -182,21 +171,7 @@ export default function ContactSection() {
                   />
                 </div>
 
-                {/* Email */}
-                <div className="flex flex-col gap-2">
-                  <label className="text-sm font-medium text-zinc-300">
-                    {t('contact.emailLabel')}
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder={t('contact.emailPlaceholder')}
-                    className="px-4 py-3 rounded-xl bg-zinc-900/40 border border-zinc-800 text-white placeholder-zinc-650 focus:outline-none focus:border-purple-500 focus:shadow-[0_0_12px_rgba(168,85,247,0.3)] transition-all duration-300 text-sm"
-                    disabled={status === 'sending'}
-                  />
-                </div>
+
 
                 {/* Message */}
                 <div className="flex flex-col gap-2">
@@ -238,47 +213,17 @@ export default function ContactSection() {
             {/* Info Column (2 cols) - Contained in a subtle panel */}
             <div className="md:col-span-2 p-6 rounded-[20px] bg-white/5 border border-white/10 flex flex-col justify-between">
               {/* Upper half: Info details */}
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-4">
                 <h3 className="text-xl font-bold tracking-tight text-white">
                   {t('contact.detailsTitle')}
                 </h3>
-
-                <div className="flex flex-col gap-4">
-                  {/* Email address info */}
-                  <div className="flex gap-3 items-center">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-purple-950/30 border border-purple-500/30 text-purple-400 shrink-0">
-                      <Mail size={18} />
-                    </div>
-                    <div className="flex flex-col min-w-0 w-full">
-                      <span className="text-xs text-zinc-500 font-medium">EMAIL</span>
-                      <span className="text-sm text-zinc-200 font-semibold truncate block">
-                        {emailAddress}
-                      </span>
-                    </div>
-                  </div>
-                </div>
+                <p className="text-sm text-zinc-400 leading-relaxed">
+                  {t('contact.detailsDesc')}
+                </p>
               </div>
 
               {/* Lower half: Actions & Copier */}
               <div className="flex flex-col gap-3 mt-8">
-                {/* Copy Email Button */}
-                <button
-                  onClick={handleCopyEmail}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-zinc-700 hover:border-purple-500 bg-zinc-900/40 hover:bg-purple-950/20 text-zinc-200 hover:text-white transition-all duration-300 cursor-pointer text-sm font-semibold"
-                >
-                  {copied ? (
-                    <>
-                      <Check size={15} className="text-emerald-400" />
-                      {t('contact.copiedEmail')}
-                    </>
-                  ) : (
-                    <>
-                      <Copy size={15} />
-                      {t('contact.copyEmail')}
-                    </>
-                  )}
-                </button>
-
                 {/* Direct Mailto Anchor */}
                 <a
                   href={`mailto:${emailAddress}`}
