@@ -66,7 +66,7 @@ export default function BentoGrid() {
             I'm flexible with time zones & locations
           </h1>
           <p className="absolute bottom-[15%] lg:bottom-[12%] left-[5%] z-10 text-zinc-400 text-[13px] leading-5">
-            I'm based in Algeria and open to remote work worldwide.
+            I'm based in Chile and open to remote work worldwide.
           </p>
           <video
             src="/video/glob.mp4"
@@ -77,7 +77,7 @@ export default function BentoGrid() {
             className="mt-[10%] w-[90%] lg:w-[70%] h-[50%] object-cover mix-blend-lighten"
           />
           <a
-            href="mailto:contact@kazutoblack.com"
+            href="/contact"
             className="absolute bottom-[4%] lg:bottom-[5%] left-[5%] z-10 flex items-center gap-2 text-white px-4 py-1.5 rounded-xl border border-purple-500/60 bg-purple-950/30 shadow-[0_0_5px_rgba(126,34,206,0.5)] hover:shadow-[0_0_15px_rgba(126,34,206,0.7)] transition-all duration-300 text-sm font-medium"
           >
             <Send size={14} /> Contact Me

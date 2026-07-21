@@ -1,8 +1,8 @@
 ---
-import '../styles/global.css';
-import CursorEffect from '../components/CursorEffect.jsx';
+import "../styles/global.css";
+import CursorEffect from "../components/CursorEffect.jsx";
 
-const { title = 'Kazuto_Black | Frontend Developer Portfolio' } = Astro.props;
+const { title = "Kazuto_Black | Portfolio" } = Astro.props;
 ---
 
 <!doctype html>
@@ -16,7 +16,7 @@ const { title = 'Kazuto_Black | Frontend Developer Portfolio' } = Astro.props;
     <title>{title}</title>
     <meta
       name="description"
-      content="Portfolio of Kazuto_Black, Frontend Developer based in Algeria. Showcasing modern web projects built with React, Astro, and more."
+      content="Portfolio of Kazuto_Black, Full Stack Developer based in Chile. Showcasing modern web projects built with React, Astro, and more."
     />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,27 +36,46 @@ const { title = 'Kazuto_Black | Frontend Developer Portfolio' } = Astro.props;
 
 <style is:global>
   :root {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Outfit', sans-serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Outfit", sans-serif;
   }
 
   /* Custom Scrollbar */
-  ::-webkit-scrollbar { width: 8px; }
-  ::-webkit-scrollbar-track { background: #000; }
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #000;
+  }
   ::-webkit-scrollbar-thumb {
     background: #581c87;
     border-radius: 9999px;
     border: 2px solid #000;
   }
-  ::-webkit-scrollbar-thumb:hover { background: #7e22ce; }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #7e22ce;
+  }
 
   /* Fade-in animation for footer logo */
   @keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  .animate-fadeIn { animation: fadeIn 1.5s ease-in-out; }
+  .animate-fadeIn {
+    animation: fadeIn 1.5s ease-in-out;
+  }
 </style>
