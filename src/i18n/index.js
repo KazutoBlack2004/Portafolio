@@ -19,6 +19,8 @@ const resources = {
         subtitle: 'A curated selection of my most significant projects, showcasing my expertise in web development, design, and creating interactive experiences.',
         website: 'Website',
         github: 'GitHub',
+        hintDrift: 'drifting slowly · hover to pause',
+        hintInteract: 'scroll · drag · or use arrows',
         items: {
           chilebite: {
             titleStart: 'Chile',
@@ -61,6 +63,8 @@ const resources = {
         subtitle: 'Una selección cuidadosa de mis proyectos más importantes, demostrando mi experiencia en desarrollo web, diseño y creación de experiencias interactivas.',
         website: 'Sitio Web',
         github: 'GitHub',
+        hintDrift: 'deslizando lentamente · pasa el mouse para pausar',
+        hintInteract: 'scroll · arrastra · o usa las flechas',
         items: {
           chilebite: {
             titleStart: 'Chile',
