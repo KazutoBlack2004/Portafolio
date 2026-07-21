@@ -18,6 +18,24 @@ const resources = {
         work: "My work",
         downloadCv: "Download CV"
       },
+      about: {
+        title: "About Me",
+        bioPart1: "I am a Computer Science Engineer specializing in Full Stack development, with experience creating web applications and video games using Unity. I am passionate about building scalable solutions, maintaining clean code, and tackling technical challenges that bring value to users.",
+        bioPart2: "Currently, I am expanding my knowledge in web creation and application deployment, complementing my development experience with best practices in architecture and scalability. I also have an interest in areas such as data mining and ethical web scraping.",
+        techStack: "Tech Stack",
+        techStackDesc: "Technologies and tools I work with daily.",
+        locationTitle: "Location & Flexibility",
+        locationDesc: "Based in Chile, open to remote work worldwide.",
+        certifications: "Certifications & Badges",
+        certificationsDesc: "Official certifications and academic achievements.",
+        viewCertificate: "View PDF",
+        institutions: {
+          aws: "AWS Academy",
+          cisco: "Cisco Netacad",
+          inacap: "Inacap",
+          santander: "Santander"
+        }
+      },
       contact: {
         titleStart: "Get in",
         titleAccent: "Touch",
@@ -90,6 +108,24 @@ const resources = {
         contact: "Contáctame",
         work: "Mi trabajo",
         downloadCv: "Descargar CV"
+      },
+      about: {
+        title: "Sobre Mí",
+        bioPart1: "Soy Ingeniero Informático especializado en desarrollo Full Stack, con experiencia creando aplicaciones web y videojuegos utilizando Unity. Me apasiona construir soluciones escalables, mantener un código limpio y enfrentar desafíos técnicos que aporten valor a los usuarios.",
+        bioPart2: "Actualmente estoy ampliando mis conocimientos en creación web y en el despliegue de aplicaciones, complementando mi experiencia en desarrollo con buenas prácticas de arquitectura y escalabilidad. También tengo interés en áreas como la minería de datos, el web scraping ético.",
+        techStack: "Tecnologías",
+        techStackDesc: "Tecnologías y herramientas que utilizo a diario.",
+        locationTitle: "Ubicación y Flexibilidad",
+        locationDesc: "Residente en Chile, disponible para trabajo remoto a nivel mundial.",
+        certifications: "Certificaciones e Insignias",
+        certificationsDesc: "Certificaciones oficiales y logros académicos.",
+        viewCertificate: "Ver PDF",
+        institutions: {
+          aws: "AWS Academy",
+          cisco: "Cisco Netacad",
+          inacap: "Inacap",
+          santander: "Santander"
+        }
       },
       contact: {
         titleStart: "Ponte en",
